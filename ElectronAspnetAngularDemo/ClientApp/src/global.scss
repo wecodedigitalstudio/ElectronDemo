@@ -1,0 +1,42 @@
+@import "./theme/variables.scss";
+@import "./theme/theme.scss";
+@import "./theme/common.scss";
+
+// Scaling e font globale
+html {
+	height: 100%;
+	font-size: 12px;
+	font-family: var(--main-font);
+	body {
+		margin: 0 auto;
+		height: 100%;
+	}
+}
+
+.cursor-pointer { 
+	cursor: pointer; 
+}
+
+.w-100 { 
+	width: 100%; 
+}
+
+/***
+Da usare per gestire elementi su mobile e viceversa
+***/
+@media (max-width: $xl) {
+  .desktop-ui {
+    display: none !important;
+  }
+  .mobile-ui {
+    display: block;
+  }
+}
+@media (min-width: $xl) {
+  .desktop-ui {
+    display: block;
+  }
+  .mobile-ui {
+    display: none !important;
+  }
+}

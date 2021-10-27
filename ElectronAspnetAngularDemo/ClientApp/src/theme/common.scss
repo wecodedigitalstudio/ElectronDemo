@@ -1,0 +1,94 @@
+.p-breadcrumb {
+  background: transparent;
+  border: 0;
+  padding: 0rem 0.5rem;
+}
+
+.p-calendar {
+  .p-datepicker {
+    min-width: 300px !important;
+  }
+}
+
+.p-confirm-dialog {
+  .p-dialog-content {
+    padding: 18px !important;
+  }
+}
+
+.p-table-wrapper {
+  padding-bottom: 6px;
+  @media (max-width: $breakpoint-scroll-table) {
+    overflow-x: scroll;
+  }
+}
+
+.p-menubar {
+  background: var(--primary);
+  border-radius: 0;
+  border: 0;
+  .p-menuitem-text {
+    color: var(--light) !important;
+  }
+  .p-submenu-icon {
+    color: var(--light) !important;
+  }
+  .p-menuitem-link {
+    &:hover {
+      .p-menuitem-text {
+        color: #495057 !important;
+      }
+      .p-submenu-icon {
+        color: #495057 !important;
+      }
+    }
+    &:focus {
+      box-shadow: none !important;
+    }
+  }
+  .p-submenu-list {
+    .p-menuitem-text {
+      color: #495057 !important;
+    }
+  }
+}
+
+.p-menubar-end {
+  .p-menuitem-icon {
+    color: var(--light) !important;
+  }
+  .p-menuitem-link {
+    &:hover {
+      .p-menuitem-icon {
+        color: #495057 !important;
+      }
+    }
+  }
+}
+
+.p-tabview {
+  .p-tabview-nav-link {
+    box-shadow: none !important;
+  }
+}
+
+.p-checkbox {
+	height: 16px;
+	width: 16px;
+	.p-checkbox-box {
+		height: 16px;
+		width: 16px;
+	}
+	.p-checkbox-icon {
+		font-size: 10px !important;
+	}
+}
+
+
+.notification-panel {
+	top: 34px !important;
+	&::before,
+	&::after {
+		display: none !important;
+	}
+}

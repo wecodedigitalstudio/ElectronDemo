@@ -1,0 +1,40 @@
+// Media breakpoint
+$xs: 320px;
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+$xxl: 1400px;
+
+// Color set
+$primary: #2196f3;
+$success: #14a333;
+$danger: #ce1717;
+$warning: #f0ad4e;
+$blue-500: #0d6efd;
+$light: #fff;
+$lighter: #f8f9fa;
+$dark: #0f0f0f;
+$darker: #313131;
+
+:root {
+	// Custom color
+	--dark: #0f0f0f;
+	--light-dark: #313131;
+	--light: #ffffff;
+	--lighter: #f8f9fa;
+	--primary: #2196f3;
+	--success: #14a333;
+	--danger: #ce1717;
+	--blue-500: #0d6efd;
+
+	// Font
+	--main-font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+
+	// Breakpoint
+	--sm: 576px;
+	--md: 768px;
+	--lg: 1024px;
+}
+
+$breakpoint-scroll-table: 1300px;

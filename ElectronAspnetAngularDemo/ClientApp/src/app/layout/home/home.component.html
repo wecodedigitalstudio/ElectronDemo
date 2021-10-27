@@ -1,0 +1,66 @@
+<!-- Header -->
+<div class="grid my-5 px-3">
+  <div class="col-2 flex justify-content-end">
+    <label class="pt-2" >Report ISPESL</label>
+  </div>
+  <div class="col-2">
+    <input
+      disabled
+      class="w-full"
+      type="text"
+      pInputText
+      [(ngModel)]="reportCode"
+    />
+  </div>
+  <div class="col-8 flex justify-content-end">
+    <!-- <button
+      pButton
+      label="Seleziona file"
+      class="p-button p-button-primary"
+      (click)="onSelectFileButton_Click()"
+    ></button> -->
+    <p-fileUpload
+    [url]="url"
+    mode="basic"
+    chooseLabel="Seleziona file"
+    [accept]="'.xlsx'"
+    [auto]="true"
+    (onUpload)="onUpload($event)"
+  ></p-fileUpload>    
+
+    <button
+      pButton
+      label="Esporta file"
+      class="ml-3 p-button p-button-success"
+      (click)="onExportButton_Click()"      
+    ></button>
+  </div>
+</div>
+
+<!-- Tab -->
+<p-tabView>
+
+	<!-- tab Dati serbatoio -->
+	<p-tabPanel header="Dati serbatoio">
+        Dati serbatoio
+	</p-tabPanel>
+
+	<!-- tab Responsabile prova EA -->
+	<p-tabPanel header="Responsabile prova EA">
+        Responsabile prova EA
+	</p-tabPanel>
+
+	<!-- tab Risultati prova EA -->
+	<p-tabPanel header="Risultati prova EA">
+        Risultati prova EA
+	</p-tabPanel>
+    
+	<!-- tab CEF -->
+	<p-tabPanel header="CEF">
+        CEF
+	</p-tabPanel>    
+
+
+</p-tabView>
+
+

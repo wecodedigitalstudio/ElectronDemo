@@ -1,34 +1,42 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { RouterModule } from '@angular/router';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+// prime ng
+import { ButtonModule } from 'primeng/button';
+import { FileUploadModule } from 'primeng/fileupload';
+import { PanelModule } from 'primeng/panel';
+import { SharedModule as PrimeNgSharedModule } from 'primeng/api';
+import { TabViewModule } from 'primeng/tabview';
+
+// routing
+import { AppRoutingModule } from './app-routing.module';
+
+// app
 import { AppComponent } from './app.component';
-import { NavMenuComponent } from './nav-menu/nav-menu.component';
-import { HomeComponent } from './home/home.component';
-import { CounterComponent } from './counter/counter.component';
-import { FetchDataComponent } from './fetch-data/fetch-data.component';
+import { HomeComponent } from './layout/home/home.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NavMenuComponent,
-    HomeComponent,
-    CounterComponent,
-    FetchDataComponent
-  ],
+  declarations: [AppComponent, HomeComponent],
   imports: [
-    BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
-    HttpClientModule,
+    // angular
+    BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
-    RouterModule.forRoot([
-      { path: '', component: HomeComponent, pathMatch: 'full' },
-      { path: 'counter', component: CounterComponent },
-      { path: 'fetch-data', component: FetchDataComponent },
-    ])
+    ReactiveFormsModule,
+    HttpClientModule,
+    AppRoutingModule,
+
+    // prime ng
+    ButtonModule,
+	FileUploadModule,
+	PanelModule,
+    PrimeNgSharedModule,
+	TabViewModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

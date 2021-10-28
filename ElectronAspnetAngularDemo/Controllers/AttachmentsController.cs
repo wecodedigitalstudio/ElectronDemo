@@ -1,4 +1,6 @@
-﻿using ElectronAspnetAngularDemo.Dtos;
+﻿using ElectronAspnetAngularDemo.Data;
+using ElectronAspnetAngularDemo.Dtos;
+using ElectronAspnetAngularDemo.Models;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -10,6 +12,14 @@ namespace ElectronAspnetAngularDemo.Controllers
     [ApiController]
     public class AttachmentsController : ControllerBase
     {
+
+        private GaiaDataContext dataContext;
+
+        public AttachmentsController(GaiaDataContext dataContext)
+        {
+            this.dataContext = dataContext;
+        }
+
         [HttpPost]
         [Route("api/attachments/upload")]
         public async Task<IActionResult> UploadAsync()
@@ -26,6 +36,18 @@ namespace ElectronAspnetAngularDemo.Controllers
                 OriginalFileName = file.FileName,
                 Size = file.Length
             };
+
+            var equipment = new Equipment()
+            {
+                Province = "AN",
+                SerialNumber = "12345",
+                Year = "2021"
+            };
+
+            var path = this.dataContext.DbPath;
+
+            this.dataContext.Equipments.Add(equipment);
+            await this.dataContext.SaveChangesAsync();
 
             return Ok(attachmentDto);
         }

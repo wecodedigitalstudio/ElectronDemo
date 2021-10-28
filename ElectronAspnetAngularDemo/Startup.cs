@@ -1,7 +1,11 @@
+using Autofac;
+using Autofac.Extensions.DependencyInjection;
+using ElectronAspnetAngularDemo.Data;
 using ElectronNET.API;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -11,6 +15,8 @@ namespace ElectronAspnetAngularDemo
 {
     public class Startup
     {
+        public ILifetimeScope AutofacContainer { get; private set; }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -21,8 +27,10 @@ namespace ElectronAspnetAngularDemo
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllers();
-            
+            services
+                .AddControllers()
+                .AddJsonOptions(opts => opts.JsonSerializerOptions.PropertyNamingPolicy = null);
+
             // configurazione SPA Angular
             services.AddSpaStaticFiles(configuration =>
             {
@@ -51,6 +59,8 @@ namespace ElectronAspnetAngularDemo
                 app.UseSpaStaticFiles();
             }
 
+            this.AutofacContainer = app.ApplicationServices.GetAutofacRoot();
+
             app.UseCors("CorsPolicy");
             app.UseRouting();
 
@@ -60,6 +70,11 @@ namespace ElectronAspnetAngularDemo
             });
 
             Task.Run(async () => await Electron.WindowManager.CreateWindowAsync());
+        }
+
+        public void ConfigureContainer(ContainerBuilder builder)
+        {
+            builder.RegisterType<GaiaDataContext>().AsSelf().InstancePerLifetimeScope();
         }
     }
 }
